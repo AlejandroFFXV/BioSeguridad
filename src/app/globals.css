@@ -1,0 +1,468 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+.paragraph_home {
+  font-size: 24px;
+}
+.paragraph_list {
+  font-size: 20px;
+}
+
+.h2_about {
+  font-size: 30px;
+}
+/* BotonFace */
+.btn {
+  display: block;
+  padding: 0.7em 1em;
+  background: transparent;
+  outline: none;
+  border: 0;
+  color: #d4af37;
+  letter-spacing: 0.1em;
+  font-family: monospace;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.cube {
+  position: relative;
+  transition: all 0.5s;
+}
+
+.cube .bg-top {
+  position: absolute;
+  height: 10px;
+  background: #d4af37;
+  bottom: 100%;
+  left: 5px;
+  right: -5px;
+  transform: skew(-45deg, 0);
+  margin: 0;
+  transition: all 0.4s;
+}
+
+.cube .bg-top .bg-inner {
+  bottom: 0;
+}
+
+.cube .bg {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  background: #d4af37;
+  transition: all 0.4s;
+}
+
+.cube .bg-right {
+  position: absolute;
+  background: #d4af37;
+  top: -5px;
+  z-index: 0;
+  bottom: 5px;
+  width: 10px;
+  left: 100%;
+  transform: skew(0, -45deg);
+  transition: all 0.4s;
+}
+
+.cube .bg-right .bg-inner {
+  left: 0;
+}
+
+.cube .bg-inner {
+  background: #28282d;
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  top: 2px;
+  bottom: 2px;
+}
+
+.cube .text {
+  position: relative;
+  transition: all 0.4s;
+}
+
+.cube:hover .bg-inner {
+  background: #d4af37;
+  transition: all 0.4s;
+}
+
+.cube:hover .text {
+  color: #28282d;
+  transition: all 0.4s;
+}
+
+.cube:hover .bg-right,
+.cube:hover .bg,
+.cube:hover .bg-top {
+  background: #28282d;
+}
+
+.cube:active {
+  z-index: 9999;
+  animation: bounce 0.1s linear;
+}
+
+@keyframes bounce {
+  50% {
+    transform: scale(0.9);
+  }
+}
+/* fin botonface */
+
+/* Loader animation */
+.loadern {
+  position: relative;
+  display: flex;
+  gap: 0.3em;
+}
+
+.loadern::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 2em;
+  filter: blur(45px);
+  background-color: #e299ff;
+  background-image: radial-gradient(
+      at 52% 57%,
+      hsla(11, 83%, 72%, 1) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 37% 57%, hsla(175, 78%, 66%, 1) 0px, transparent 50%);
+}
+
+.loader__circle {
+  --size__loader: 0.6em;
+  width: var(--size__loader);
+  height: var(--size__loader);
+  border-radius: 50%;
+  animation: loader__circle__jumping 2s infinite;
+  background-color: #ffb535;
+}
+
+.loader__circle:nth-child(2n) {
+  animation-delay: 300ms;
+  background-color: #f6e775;
+}
+
+.loader__circle:nth-child(3n) {
+  animation-delay: 600ms;
+}
+
+@keyframes loader__circle__jumping {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  25% {
+    transform: translateY(-15px) scale(0.5);
+  }
+
+  50% {
+    transform: translateY(0px);
+  }
+
+  75% {
+    transform: translateY(5px) scale(0.9);
+  }
+}
+/* fin loader animation */
+
+/* File uploader */
+.custum-file-upload {
+  height: 200px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  gap: 20px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #e8e8e8;
+  background-color: #212121;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0px 48px 35px -48px #e8e8e8;
+}
+
+.custum-file-upload .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custum-file-upload .icon svg {
+  height: 80px;
+  fill: #e8e8e8;
+}
+
+.custum-file-upload .text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custum-file-upload .text span {
+  font-weight: 400;
+  color: #e8e8e8;
+}
+
+.custum-file-upload input {
+  display: none;
+}
+
+/* formulario support */
+/* you can choose any color you want. don't be afraid to experiment  */
+.input-supp,
+.button-supp {
+  width: 100%;
+  height: 40px;
+  position: relative;
+  padding: 10px;
+  border: 0.1px solid #575cb5;
+}
+
+.button-supp {
+  background: #6d74e3;
+  border: none;
+}
+
+.wrapper {
+  position: relative;
+  transform: skewY(-14deg);
+}
+
+.wrapper .li-supp,
+.wrapper .button-supp {
+  position: relative;
+  list-style: none;
+  width: 200px;
+  z-index: var(--i);
+  transition: 0.3s;
+  color: white;
+}
+
+.wrapper .li-supp::before,
+.wrapper .button-supp::before {
+  position: absolute;
+  content: "";
+  background: #6d74e3;
+  top: 0;
+  left: -40px;
+  width: 40px;
+  height: 40px;
+  transform-origin: right;
+  transform: skewY(45deg);
+  transition: 0.3s;
+}
+
+.wrapper .li-supp::after,
+.wrapper .button-supp::after {
+  position: absolute;
+  content: "";
+  background: #6d74e3;
+  width: 200px;
+  height: 40px;
+  top: -40px;
+  left: 0;
+  transform-origin: bottom;
+  transform: skewX(45deg);
+  transition: 0.3s;
+}
+
+.wrapper .li-supp:nth-child(1)::after,
+.wrapper .li-supp:nth-child(1)::before {
+  background-color: #d8daf7;
+}
+
+.wrapper .li-supp:nth-child(2)::after,
+.wrapper .li-supp:nth-child(2)::before {
+  background-color: #c2c5f3;
+}
+
+.wrapper .li-supp:nth-child(3)::after,
+.wrapper .li-supp:nth-child(3)::before {
+  background-color: #989deb;
+}
+
+.li-supp .input-supp {
+  outline: none;
+  border: none;
+  color: black;
+}
+
+.li-supp .input-supp::placeholder {
+  color: black;
+}
+
+.li-supp:nth-child(1) .input-supp {
+  background: #d8daf7;
+}
+
+.li-supp:nth-child(2) .input-supp {
+  background: #c2c5f3;
+}
+
+.li-supp:nth-child(3) .input-supp {
+  background: #989deb;
+}
+
+.li-supp:nth-child(1) .input-supp:focus {
+  outline: none;
+  border: 3.5px solid #d8daf7;
+}
+
+.li-supp:nth-child(2) .input-supp:focus {
+  outline: none;
+  border: 3.5px solid #c2c5f3;
+}
+
+.li-supp:nth-child(3) .input-supp:focus {
+  outline: none;
+  border: 3.5px solid #989deb;
+}
+
+.wrapper .li-supp:hover,
+.wrapper .button-supp:hover {
+  transform: translateX(-20px);
+}
+
+.button-supp:hover,
+.button-supp:hover::before,
+.button-supp:hover::after {
+  background: #575cb5;
+}
+
+.button-supp:active {
+  transform: translateX(0px);
+}
+/* fin formulario */
+/* Tarjetas */
+.card {
+  width: auto; /* Porcentaje del ancho de la pantalla */
+  max-width: 95%;
+  height: auto; /* Altura ajustable según el contenido */
+  transition: all 0.2s;
+  position: relative;
+  cursor: pointer;
+}
+
+.card-inner {
+  width: 100%;
+  padding: 20px; /* Añadir espacio alrededor del contenido */
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+}
+
+.card:hover {
+  transform: scale(1.04) rotate(1deg);
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(#f6e775, #ffaf26);
+  border-radius: 50%;
+  position: absolute;
+  animation: move-up6 2s ease-in infinite alternate-reverse;
+}
+
+.circle:nth-child(1) {
+  top: -25px;
+  left: -25px;
+}
+
+.circle:nth-child(2) {
+  bottom: -25px;
+  right: -25px;
+  animation-name: move-down1;
+}
+
+@keyframes move-up6 {
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes move-down1 {
+  to {
+    transform: translateY(10px);
+  }
+}
+
+/* checkebox */
+.checkbox {
+  appearance: none;
+  overflow: hidden;
+  min-width: 30px;
+  aspect-ratio: 1/1;
+  border-radius: 30% 70% 70% 30%/30% 30% 70% 70%;
+  border: 2px solid rgb(255, 102, 0);
+  position: relative;
+  transition: all 0.2s ease-in-out;
+}
+
+.checkbox::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  font-size: 35px;
+  transition: all 0.2s ease-in-out;
+}
+
+.checkbox:checked {
+  border: 2px solid rgb(255, 212, 59);
+  background: linear-gradient(
+    135deg,
+    rgb(255, 212, 59) 0%,
+    rgb(255, 102, 0) 100%
+  );
+  box-shadow: -5px -5px 30px rgba(255, 212, 59, 1),
+    5px 5px 30px rgba(255, 102, 0, 1);
+}
+
+.checkbox:checked::before {
+  background: linear-gradient(
+    135deg,
+    rgb(255, 212, 59) 0%,
+    rgb(255, 102, 0) 100%
+  );
+}
