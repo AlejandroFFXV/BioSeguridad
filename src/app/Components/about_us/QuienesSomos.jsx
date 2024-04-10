@@ -2,10 +2,10 @@ const QuienesSomos = () => {
   return (
     <>
       <div className="flex justify-center align-center py-10">
-        <div class="card">
-          <div class="circle"></div>
-          <div class="circle"></div>
-          <div class="card-inner">
+        <div className="card">
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="card-inner">
             <div
               className="text-center hover:text-blue-200 duration-300 delay-300
         dark:text-white text-gray-700 p-4 rounded-lg shadow-md mb-2"

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Loader from "./Loader";
 
 const LoadingComponent = ({ delay = 2000, children }) => {

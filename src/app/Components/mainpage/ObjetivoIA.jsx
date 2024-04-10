@@ -2,7 +2,7 @@ import React from "react";
 
 const ObjetivoIA = () => {
   return (
-    <div className="flex justify-center align-center py-10">
+    <div className="flex justify-center  py-10">
       <div class="card">
         <div class="circle"></div>
         <div class="circle"></div>

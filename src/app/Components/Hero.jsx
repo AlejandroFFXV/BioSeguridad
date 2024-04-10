@@ -9,9 +9,10 @@ const Hero = () => {
       <div className="relative flex items-center justify-center ">
         <Image
           src={HeroHead}
-          className="opacity-75 rounded-full mx-auto my-auto
+          className="opacity-75 rounded-full mx-auto 
           w-720 max-w-full h-480 my-auto"
           alt="hero"
+          priority
         />
         <div
           className="absolute top-1/2 left-1/2 transform

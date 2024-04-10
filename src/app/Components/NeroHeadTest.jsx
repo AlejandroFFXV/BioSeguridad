@@ -20,7 +20,7 @@ const NeroHeadTest = () => {
           className="absolute top-4 right-0 flex flex-wrap mb-6 
               dark:text-white font-sans font-light text-2xl list-inside"
         >
-          <Link href="/">
+          <Link href="/face">
             <div className=" mr-4 md:mr-6">
               <p
                 className="opacity-50 duration-300 delay-300 pb-2 px-2

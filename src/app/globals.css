@@ -203,50 +203,6 @@ body {
 }
 /* fin loader animation */
 
-/* File uploader */
-.custum-file-upload {
-  height: 200px;
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: space-between;
-  gap: 20px;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  border: 2px dashed #e8e8e8;
-  background-color: #212121;
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0px 48px 35px -48px #e8e8e8;
-}
-
-.custum-file-upload .icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.custum-file-upload .icon svg {
-  height: 80px;
-  fill: #e8e8e8;
-}
-
-.custum-file-upload .text {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.custum-file-upload .text span {
-  font-weight: 400;
-  color: #e8e8e8;
-}
-
-.custum-file-upload input {
-  display: none;
-}
-
 /* formulario support */
 /* you can choose any color you want. don't be afraid to experiment  */
 .input-supp,
@@ -403,6 +359,25 @@ body {
   border-radius: 50%;
   position: absolute;
   animation: move-up6 2s ease-in infinite alternate-reverse;
+}
+.circle_Ai {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(#75e7f6, #26ccff);
+  border-radius: 50%;
+  position: absolute;
+  animation: move-up6 2s ease-in infinite alternate-reverse;
+}
+
+.circle_Ai:nth-child(1) {
+  top: -25px;
+  left: -25px;
+}
+
+.circle_Ai:nth-child(2) {
+  bottom: -25px;
+  right: -25px;
+  animation-name: move-down1;
 }
 
 .circle:nth-child(1) {

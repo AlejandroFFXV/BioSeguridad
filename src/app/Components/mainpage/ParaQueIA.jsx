@@ -1,6 +1,6 @@
 const ParaQueIA = () => {
   return (
-    <div className="flex justify-center align-center py-10">
+    <div className="flex justify-center  py-10">
       <div className=" card">
         <div className="circle"></div>
         <div className="circle"></div>

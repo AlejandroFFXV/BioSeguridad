@@ -4,7 +4,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Testimage = () => {
+const FaceRegister = () => {
   const [user, setUser] = useState({
     name: "",
   });
@@ -76,4 +76,4 @@ const Testimage = () => {
   );
 };
 
-export default Testimage;
+export default FaceRegister;

@@ -21,7 +21,7 @@ const FaceTest = () => {
   return (
     <>
       <div className="flex space-x-20 justify-center items-center h-screen">
-        <a href="/testeo" className="btn cube cube-hover" type="button">
+        <a href="/face/register" className="btn cube cube-hover" type="button">
           <div className="bg-top">
             <div className="bg-inner"></div>
           </div>
@@ -36,7 +36,8 @@ const FaceTest = () => {
         <PythonTest data={data} />
         <button
           onClick={handleClick}
-          className=" btn cube cube-hover"
+          className=" btn cube cube-hover "
+          disabled
           type="button"
         >
           <div className="bg-top">

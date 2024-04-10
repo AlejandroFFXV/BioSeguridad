@@ -1,11 +1,13 @@
-import WorkingOnIt from "../Components/WorkingOnIt";
+import Navbar from "../Components/Navbar";
+import Inteligencia from "../Components/inteligencia/Inteligencia";
 import LoadingAnimation from "../Components/loading_comp/LoadingComponent";
 
 const inteligencia = () => {
   return (
     <>
       <LoadingAnimation>
-        <WorkingOnIt />
+        <Navbar />
+        <Inteligencia />
       </LoadingAnimation>
     </>
   );
