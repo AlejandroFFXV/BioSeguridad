@@ -13,7 +13,7 @@ const Navbar = () => {
     <nav className=" p-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center flex-shrink-0 text-white mr-6">
-          <span className="font-semibold text-xl tracking-tight">///</span>
+          <span className="font-semibold text-xl tracking-tight">Bio</span>
         </div>
         <div className="block lg:hidden">
           <button
