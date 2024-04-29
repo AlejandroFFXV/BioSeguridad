@@ -35,7 +35,7 @@ export async function POST(request) {
     const filePath = path.join(process.cwd(), "public", image.name);
     await writeFile(filePath, buffer);
     const flaskResponse = await axios.post(
-      "https://bioseguridad-5a2982caf0ec.herokuapp.com/obtener_datos",
+      "http://localhost:5000/obtener_datos",
       formData,
       {
         headers: {
