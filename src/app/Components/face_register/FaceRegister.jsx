@@ -1,14 +1,18 @@
 "use client";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/navigation";
 
 const FaceRegister = () => {
   const [user, setUser] = useState({
     name: "",
   });
   const [file, setFile] = useState(null);
+  const form = useRef(null);
+  const router = useRouter();
+
   const handleChange = (e) => {
     setUser({
       ...user,
@@ -30,12 +34,14 @@ const FaceRegister = () => {
     });
     console.log(res);
     toast("Datos enviados!");
+    form.current.reset();
+    router.push("/");
   };
   return (
     <>
       <ToastContainer />
       <div className="flex items-center justify-center h-screen">
-        <form className="form" onSubmit={handleSubmit}>
+        <form className="form" onSubmit={handleSubmit} ref={form}>
           <ul className="wrapper">
             <li className="li-supp" style={{ "--i": 4 }}>
               <input
