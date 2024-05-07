@@ -36,7 +36,7 @@ export async function POST(request) {
     console.log(formData);
 
     const flaskResponse = await axios.post(
-      "http://localhost:5000/procesar-imagen",
+      "https://flask-app-z2j1.onrender.com/procesar-imagen",
       formData,
       {
         headers: {

@@ -8,14 +8,16 @@ app = Flask(__name__)
 CORS(app)
 
 
-def decode_image(img_bytes):
-    """Decodifica la imagen a partir de bytes."""
+def obtener_coordenadas_facemesh(landmark_list, img):
+    h, w = img.shape[:2]
+    xyz = [(lm.x, lm.y, lm.z) for lm in landmark_list.landmark]
+    return np.multiply(xyz, [w, h, w]).astype(int)
+
+
+def obtener_coordenadas_imagen(img_bytes):
     nparr = np.frombuffer(img_bytes, np.uint8)
-    return cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+    img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
-
-def process_image_with_facemesh(img):
-    """Procesa la imagen con FaceMesh y devuelve las coordenadas de los landmarks."""
     with mp.solutions.face_mesh.FaceMesh(
         static_image_mode=True,
         refine_landmarks=False,
@@ -38,30 +40,26 @@ def obtener_datos():
     if "image" not in request.files:
         return jsonify({"error": "No se recibió ninguna imagen."}), 400
 
-    try:
-        img_bytes = request.files["image"].read()
-        img = decode_image(img_bytes)
-        coordenadas = process_image_with_facemesh(img)
-        if coordenadas is None:
-            return jsonify({"error": "No se detectó ninguna cara en la imagen."}), 400
+    img_bytes = request.files["image"].read()
+    coordenadas = obtener_coordenadas_imagen(img_bytes)
+    if coordenadas is None:
+        return jsonify({"error": "No se detectó ninguna cara en la imagen."}), 400
 
-        promedios = np.mean(coordenadas, axis=0)
-        promedio_x, promedio_y, promedio_z = promedios
+    promedios = np.mean(coordenadas, axis=0)
+    promedio_x, promedio_y, promedio_z = promedios
 
-        # Convertir las coordenadas a una lista antes de enviarlas como JSON
-        coordenadas_lista = coordenadas.tolist()
+    # Convertir las coordenadas a una lista antes de enviarlas como JSON
+    coordenadas_lista = coordenadas.tolist()
 
-        return jsonify(
-            {
-                "promedio_x": promedio_x,
-                "promedio_y": promedio_y,
-                "promedio_z": promedio_z,
-                "coordenadas": coordenadas_lista,
-            }
-        )
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    return jsonify(
+        {
+            "promedio_x": promedio_x,
+            "promedio_y": promedio_y,
+            "promedio_z": promedio_z,
+            "coordenadas": coordenadas_lista,
+        }
+    )
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run()
