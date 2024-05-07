@@ -19,3 +19,9 @@
 --     name VARCHAR(155) NOT NULL,
 --     url_img VARCHAR(255) NOT NULL
 -- );
+
+-- CREATE TABLE faqs (
+--     id INT AUTO_INCREMENT PRIMARY KEY,
+--     name VARCHAR(255) NOT NULL,
+--     description VARCHAR(555) NOT NULL
+-- );

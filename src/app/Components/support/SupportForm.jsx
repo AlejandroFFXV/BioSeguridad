@@ -23,11 +23,19 @@ const SupportForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(user);
-    const res = await axios.post("/api/support", user);
-    console.log(res);
-    toast("Datos enviados!");
-    form.current.reset();
-    router.push("/");
+    try {
+      const res = await axios.post("/api/support", user);
+      console.log(res);
+      toast("Datos enviados!");
+      form.current.reset();
+      router.push("/");
+    } catch (error) {
+      if (error.response && error.response.status === 500) {
+        router.push("/error");
+      } else {
+        console.error(error);
+      }
+    }
   };
   return (
     <>

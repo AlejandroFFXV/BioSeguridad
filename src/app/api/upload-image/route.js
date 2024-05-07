@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { conn } from "@/libs/mysql";
 import { writeFile } from "fs/promises";
 import path from "path";
 import { v2 as cloudinary } from "cloudinary";
@@ -34,8 +33,10 @@ export async function POST(request) {
 
     const filePath = path.join(process.cwd(), "public", image.name);
     await writeFile(filePath, buffer);
+    console.log(formData);
+
     const flaskResponse = await axios.post(
-      "http://localhost:5000/obtener_datos",
+      "http://localhost:5000/procesar-imagen",
       formData,
       {
         headers: {
@@ -44,32 +45,11 @@ export async function POST(request) {
       }
     );
 
-    const { promedio_x, promedio_y, promedio_z, coordenadas } =
-      flaskResponse.data;
+    console.log(flaskResponse);
 
-    const resImage = await cloudinary.uploader.upload(filePath);
-    console.log(resImage);
-    const coordenadasSting = JSON.stringify(coordenadas);
-    const result = await conn.query("INSERT INTO faces SET ?", {
-      name: data.get("name"),
-      promediox: promedio_x,
-      promedioy: promedio_y,
-      promedioz: promedio_z,
-      coords: coordenadasSting,
-      // url_img: filePath,
-
-      url_img: resImage.secure_url,
-    });
-
+    const respuesta = flaskResponse.data;
     return NextResponse.json({
-      name: data.get("name"),
-      promediox: promedio_x,
-      promedioy: promedio_y,
-      promedioz: promedio_z,
-      coords: coordenadas,
-      // url_img: data.get("image"),
-      url_img: resImage.secure_url,
-      id: result.insertId,
+      respuesta,
     });
   } catch (error) {
     console.log(error);

@@ -27,15 +27,22 @@ const FaceRegister = () => {
       formData.append("image", file);
     }
     console.log(user);
-    const res = await axios.post("/api/faces", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
-    console.log(res);
-    toast("Datos enviados!");
-    form.current.reset();
-    router.push("/");
+    try {
+      const res = await axios.post("/api/faces", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log(res);
+      toast("Datos enviados!");
+      form.current.reset();
+      router.push("/");
+    } catch (error) {
+      if (error.response && error.response.status === 500) {
+        // Redirige al usuario a la página de error
+        router.push("/error");
+      }
+    }
   };
   return (
     <>
