@@ -1,4 +1,3 @@
-// import FaceMain from "../Components/face/FaceMain";
 import FaceTest from "../Components/face/FaceTest";
 import Navbar from "../Components/Navbar";
 import PrivacyNotice from "../Components/face/PrivacyNotice";
@@ -9,7 +8,6 @@ function face() {
     <>
       <LoadingComponent>
         <PrivacyNotice />
-        {/* <FaceMain /> */}
         <Navbar />
         <FaceTest />
       </LoadingComponent>
